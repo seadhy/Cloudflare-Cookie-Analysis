@@ -5,7 +5,7 @@ import subprocess
 from datetime import datetime
 
 
-class CloudflareBypasser:
+class Cloudflare:
     def __init__(self, client: tls_client.Session, useragent: str):
         self.client = client
         self.useragent = useragent
@@ -329,9 +329,9 @@ class CloudflareBypasser:
 
 if __name__ == '__main__':
     client = tls_client.Session(client_identifier='chrome114', random_tls_extension_order=True)
-    cloudflare_bypasser = CloudflareBypasser(
+    cloudflare = Cloudflare(
                             client=client,                
                             useragent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36'
                         )
-    cloudflare_bypasser.get_cloudflare_cookie()
+    cloudflare.get_cloudflare_cookie()
     print(client.cookies)
